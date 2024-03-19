@@ -2,7 +2,7 @@ import Input from '@/components/Input'
 import axios from 'axios'
 import { signIn } from 'next-auth/react'
 import Image from 'next/image'
-import { useRouter } from 'next/router'
+
 
 import React, { useCallback, useState } from 'react'
 import { FaGithub } from 'react-icons/fa'
@@ -10,8 +10,6 @@ import { FcGoogle } from 'react-icons/fc'
 
 
 const Auth = () => {
-
-    const router = useRouter()
 
     const [email, setEmail] = useState('');
     const [name, setName] = useState('');
@@ -27,26 +25,27 @@ const Auth = () => {
     const login = useCallback(async () => {
         try {
             await signIn('credentials', {
-                email, password, redirect: false, callbackUrl: '/'
+                email, password, redirect: false, callbackUrl: '/profiles'
             })
 
-            router.push('/');
         } catch (error) {
             console.log(error);
 
         }
-    }, [email, password, router])
+    }, [email, password])
 
     const register = useCallback(async () => {
         try {
             await axios.post('/api/register', {
                 email, name, password
             })
+
+            login();
         } catch (error) {
             console.log(error);
 
         }
-    }, [email, name, password])
+    }, [email, name, password, login])
 
 
 
@@ -83,7 +82,7 @@ const Auth = () => {
                             hover:opacity-80
                             transition
                             '
-                            onClick={() => signIn('google', {callbackUrl: "/"})}
+                            onClick={() => signIn('google', {callbackUrl: "/profiles"})}
                             >
                                 <FcGoogle size={30} />
 
@@ -100,7 +99,7 @@ const Auth = () => {
                             hover:opacity-80
                             transition
                             '
-                            onClick={() => signIn('github', {callbackUrl: "/"})}
+                            onClick={() => signIn('github', {callbackUrl: "/profiles"})}
                             >
                                 <FaGithub size={30} />
 
