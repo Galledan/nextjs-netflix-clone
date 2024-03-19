@@ -27,10 +27,10 @@ const Input: React.FC<InputProps> = ({id,onChange,value,label,type}) => {
             w-full 
             text-md 
             text-white 
-            bg-neutral-700 
-            appearance-none 
-            focus:outline-none 
-            focus:ring-0 
+            border-2
+          border-neutral-500 
+          bg-black 
+            bg-opacity-70
             peer' 
             placeholder=' ' />
             <label 
@@ -45,7 +45,7 @@ const Input: React.FC<InputProps> = ({id,onChange,value,label,type}) => {
             top-4 
             z-10 
             origin-[0] 
-            left-6 
+            left-4 
             peer-placeholder-shown:scale-100
             peer-placeholder-shown:translate-y-0
             peer-focus:scale-75
