@@ -14,7 +14,7 @@ export async function getServerSideProps(context: NextPageContext) {
   if (session) {
     return {
       redirect: {
-        destination: '/',
+        destination: '/profiles',
         permanent: false,
       }
     }
@@ -44,7 +44,7 @@ const Auth = () => {
         email,
         password,
         redirect: false,
-        callbackUrl: '/'
+        callbackUrl: '/profiles'
       });
 
       router.push('/profiles');
