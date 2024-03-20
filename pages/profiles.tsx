@@ -42,7 +42,7 @@ const Profiles = () => {
                 <Image src="/images/default-slate.png" height={160} width={160} alt='profile' />
               </div>
               <div className='mt-4 text-gray-400 text-2xl text-center group-hover:text-white'>
-                {user.name}
+                {user?.name}
               </div>
             </div>
           </div>
