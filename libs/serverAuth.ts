@@ -21,6 +21,11 @@ const serverAuth = async (req: NextApiRequest, res: NextApiResponse) => {
     throw new Error('Not signed in');
   }
 
+  if(currentUser) {
+    console.log(session.user.email);
+    
+  }
+
   return { currentUser };
 }
 
